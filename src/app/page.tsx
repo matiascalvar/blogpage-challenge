@@ -17,12 +17,14 @@ const App = () => {
   const [allPosts, setAllPosts] = useState<
     { userId: number; id: string; title: string; body: string }[]
   >([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const postsRes = await getAllPosts();
         setAllPosts(postsRes.slice(93));
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -33,7 +35,9 @@ const App = () => {
 
   return (
     <div>
-      {allPosts.length > 0 ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : allPosts.length ? (
         <div className="border border-gray-500">
           {allPosts.map((post) => (
             <div key={post.id} className="border border-gray-500 m-2.5 p-2.5">
@@ -47,7 +51,7 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <div>Loading...</div>
+        <div>No posts available.</div>
       )}
     </div>
   );
