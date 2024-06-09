@@ -1,14 +1,9 @@
 import axios from "axios";
+import { Comment } from "@/types/interfaces";
 
 export const updateComment = async (commentId: number, body: string) => {
   try {
-    const res = await axios.patch<{
-      body: string;
-      email: string;
-      id: number;
-      name: string;
-      postId: number;
-    }>(
+    const res = await axios.patch<Comment>(
       `https://jsonplaceholder.typicode.com/comments/${commentId}`,
       {
         body,
