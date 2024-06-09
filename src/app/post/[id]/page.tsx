@@ -1,4 +1,5 @@
 "use client";
+import { deleteComment, updateComment } from "@/actions/comments";
 import { getComments } from "@/actions/posts";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,17 +10,43 @@ const Post = () => {
   const [comments, setComments] = useState<
     { postId: number; id: number; name: string; email: string; body: string }[]
   >([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
+  const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
+  const [editedText, setEditedText] = useState("");
 
-  const handleEditing = (commentId: number) => {
-    // open edition
-    // call API with PATCH
-    console.log("EDIT", commentId);
+  const handleEditing = (commentId: number, commentBody: string) => {
+    setEditingCommentId(commentId);
+    setEditedText(commentBody);
   };
 
-  const handleDeletion = (commentId: number) => {
-    // call API with DELETE
-    console.log("DELETE", commentId);
+  const handleSave = async (commentId: number) => {
+    try {
+      const updatedComment = await updateComment(commentId, editedText);
+
+      setEditingCommentId(null);
+      setEditedText("");
+
+      const updateComments = comments.map((comment) =>
+        commentId === comment.id
+          ? { ...comment, body: updatedComment.body }
+          : comment
+      );
+      setComments(updateComments);
+    } catch (error) {
+      console.error("Error updating comment:", error);
+    }
+  };
+
+  const handleDeletion = async (commentId: number) => {
+    try {
+      const deletedComment = await deleteComment(commentId);
+      const updateComments = comments.filter(
+        (comment) => comment.id !== commentId
+      );
+      setComments(updateComments);
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
   };
 
   useEffect(() => {
@@ -36,7 +63,6 @@ const Post = () => {
 
     fetchPosts();
   }, [id]);
-
   return (
     <div className="h-auto">
       <h1>Dynamic post #{id}</h1>
@@ -49,11 +75,15 @@ const Post = () => {
               key={comment.id}
               className="border border-gray-500 m-2.5 p-2.5"
             >
-              <div>
-                <p>{comment.email}</p>
-                <p>{comment.name}</p>
+              <div className="flex justify-between">
                 <div>
-                  <button onClick={() => handleEditing(comment.id)}>
+                  <p>{comment.email}</p>
+                  <p>{comment.name}</p>
+                </div>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => handleEditing(comment.id, comment.body)}
+                  >
                     Edit
                   </button>
                   <button onClick={() => handleDeletion(comment.id)}>
@@ -62,7 +92,25 @@ const Post = () => {
                 </div>
               </div>
 
-              <p>{comment.body}</p>
+              {editingCommentId === comment.id ? (
+                <div>
+                  <textarea
+                    value={editedText}
+                    onChange={(e) => setEditedText(e.target.value)}
+                    autoFocus
+                    rows={4}
+                    className="w-full p-2 border border-gray-300"
+                  />
+                  <button onClick={() => handleSave(comment.id)}>
+                    Confirms
+                  </button>
+                  <button onClick={() => setEditingCommentId(null)}>
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <p>{comment.body}</p>
+              )}
             </div>
           ))}
         </div>
@@ -72,4 +120,5 @@ const Post = () => {
     </div>
   );
 };
+
 export default Post;
