@@ -1,17 +1,8 @@
 "use client";
 
-import axios from "axios";
+import { getAllPosts } from "@/actions/posts";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const getAllPosts = async () => {
-  try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    return res.data;
-  } catch (err) {
-    throw err;
-  }
-};
 
 const App = () => {
   const [allPosts, setAllPosts] = useState<
