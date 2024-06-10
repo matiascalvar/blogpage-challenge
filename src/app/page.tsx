@@ -1,34 +1,17 @@
 "use client";
 
-import { getAllPosts } from "@/actions/posts";
+import usePosts from "@/hooks/usePosts";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const App = () => {
-  const [allPosts, setAllPosts] = useState<
-    { userId: number; id: string; title: string; body: string }[]
-  >([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { isLoading, data: allPosts, error } = usePosts();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsRes = await getAllPosts();
-        setAllPosts(postsRes.slice(93));
-        setLoading(false);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  else if (error) return <div>There were an error. Try again later.</div>;
 
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : allPosts.length ? (
+      {allPosts.length ? (
         <div className="border border-gray-500">
           {allPosts.map((post) => (
             <div key={post.id} className="border border-gray-500 m-2.5 p-2.5">
