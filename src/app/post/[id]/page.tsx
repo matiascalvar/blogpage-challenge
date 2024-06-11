@@ -5,6 +5,7 @@ import {
   updateComment,
 } from "@/actions/comments";
 import { getComments } from "@/actions/posts";
+import DeletionModal from "@/components/DeletionModal";
 import { useParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
@@ -22,6 +23,8 @@ const PostDetail = () => {
     email: "",
     newComment: "",
   });
+  const [currentCommentId, setCurrentCommentId] = useState<number>();
+  const [openModal, setOpenModal] = useState(false);
 
   const handleFormChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -74,6 +77,11 @@ const PostDetail = () => {
     } catch (error) {
       console.error("Error creating comment:", error);
     }
+  };
+
+  const handleModal = (commentId: number) => {
+    setCurrentCommentId(commentId);
+    setOpenModal(true);
   };
 
   const handleDeletion = async (commentId: number) => {
@@ -146,6 +154,12 @@ const PostDetail = () => {
         <div>Loading...</div>
       ) : comments.length ? (
         <div className="border border-gray-500">
+          {openModal && (
+            <DeletionModal
+              handleDeletion={() => handleDeletion(currentCommentId as number)}
+              setOpenModal={setOpenModal}
+            />
+          )}
           {comments.map((comment) => (
             <div
               key={comment.id}
@@ -162,7 +176,7 @@ const PostDetail = () => {
                   >
                     Edit
                   </button>
-                  <button onClick={() => handleDeletion(comment.id)}>
+                  <button onClick={() => handleModal(comment.id)}>
                     Delete
                   </button>
                 </div>
