@@ -9,6 +9,17 @@ export const getAllPosts = async () => {
   }
 };
 
+export const getPost = async (postId: number) => {
+  try {
+    const res = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`
+    );
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const getComments = async (postId: string) => {
   try {
     const res = await axios.get(
