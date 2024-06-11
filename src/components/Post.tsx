@@ -17,7 +17,6 @@ const Post: FunctionComponent<PostProps> = ({ post }) => {
     "bg-pink-500",
   ];
   const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
-
   return (
     <div
       key={post.id}
@@ -27,9 +26,9 @@ const Post: FunctionComponent<PostProps> = ({ post }) => {
         <div
           className={`flex items-center justify-center rounded-full ${randomColor()} w-8 h-8 mr-2 text-white`}
         >
-          JD
+          {post.initials}
         </div>
-        <p className="text-bold">John Doe</p>
+        <p className="text-bold">{post.name}</p>
       </div>
       <p className="font-medium mt-1">{post.title}</p>
       <p className="text-sm my-1">{post.body}</p>
