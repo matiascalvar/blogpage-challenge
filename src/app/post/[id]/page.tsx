@@ -1,21 +1,20 @@
 "use client";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useParams } from "next/navigation";
+import DeletionModal from "@/components/DeletionModal";
 import {
   createComment,
   deleteComment,
   updateComment,
 } from "@/actions/comments";
-import { getComments } from "@/actions/posts";
-import DeletionModal from "@/components/DeletionModal";
-import { useParams } from "next/navigation";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import usePostAndComments from "@/hooks/usePostAndComments";
 
 const PostDetail = () => {
   const { id } = useParams();
+  const { post, comments, setComments, isLoading, error } = usePostAndComments(
+    id as number | string
+  );
 
-  const [comments, setComments] = useState<
-    { postId: number; id: number; name: string; email: string; body: string }[]
-  >([]);
-  const [loading, setLoading] = useState(true);
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
   const [editedText, setEditedText] = useState("");
   const [formData, setFormData] = useState({
@@ -96,63 +95,12 @@ const PostDetail = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const comments = await getComments(id as string);
-        setComments(comments);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-        console.error(err);
-      }
-    };
-
-    fetchComments();
-  }, [id]);
+  if (isLoading) return <div>Loading...</div>;
+  else if (error) return <div>There were an error. Try again later.</div>;
 
   return (
     <div className="h-auto">
-      <h1>Dynamic post #{id}</h1>
-      <div className="flex my-5 mx-5">
-        <form onSubmit={handleAddition}>
-          <div>
-            <input
-              type="text"
-              className="w-full my-1"
-              id="name-input"
-              name="name"
-              value={formData.name}
-              onChange={handleFormChange}
-            />
-            <input
-              type="email"
-              className="w-full my-1"
-              id="email-input"
-              name="email"
-              value={formData.email}
-              onChange={handleFormChange}
-            />
-          </div>
-          <textarea
-            value={formData.newComment}
-            name="newComment"
-            onChange={handleFormChange}
-            rows={1}
-            className="w-full p-2 border border-gray-300 ml-1"
-          />
-
-          <button
-            className="mx-5 min-w-[100px] bg-red-500 text-white"
-            type="submit"
-          >
-            Add
-          </button>
-        </form>
-      </div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : comments.length ? (
+      {comments.length ? (
         <div className="border border-gray-500">
           {openModal && (
             <DeletionModal
@@ -160,6 +108,49 @@ const PostDetail = () => {
               setOpenModal={setOpenModal}
             />
           )}
+          {post && (
+            <div key={post.id} className="border border-gray-500 m-2.5 p-2.5">
+              <p>{post.userId}</p>
+              <p>{post.title}</p>
+              <p>{post.body}</p>
+            </div>
+          )}
+          <div className="flex my-5 mx-5">
+            <form onSubmit={handleAddition}>
+              <div>
+                <input
+                  type="text"
+                  className="w-full my-1"
+                  id="name-input"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleFormChange}
+                />
+                <input
+                  type="email"
+                  className="w-full my-1"
+                  id="email-input"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                />
+              </div>
+              <textarea
+                value={formData.newComment}
+                name="newComment"
+                onChange={handleFormChange}
+                rows={1}
+                className="w-full p-2 border border-gray-300 ml-1"
+              />
+
+              <button
+                className="mx-5 min-w-[100px] bg-red-500 text-white"
+                type="submit"
+              >
+                Add
+              </button>
+            </form>
+          </div>
           {comments.map((comment) => (
             <div
               key={comment.id}
