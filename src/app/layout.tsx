@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const monserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bridge In Challenge",
@@ -17,12 +17,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + "h-[100vh]"}>
-        <div className="flex justify-between items-center min-h-[70px] border border-red-500">
-          <div className="min-w-[300px] text-center text-lg text-red-600">
-            <Link href="/">BRIDGE IN CHALLENGE</Link>
+      <body className={monserrat.className + " h-[100vh] overflow-hidden"}>
+        <div
+          className="flex justify-between h-72 relative items-start pt-11 shadow-md"
+          style={{
+            backgroundImage: "url(/porto.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "top",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {/* <div
+            className="absolute inset-0 bg-gradient-to-b from-transparent to-white/75 to-white"
+            style={{
+              pointerEvents: "none", // Ensures this overlay doesn't interfere with any content
+            }}
+          ></div> */}
+          <div
+            className="min-w-[300px] text-left text-lg text-red-600 text-3xl font-extrabold tracking-widest relative pl-36"
+            id="logo"
+          >
+            <Link href="/">
+              BRIDGE IN<br></br>CHALLENGE
+            </Link>
           </div>
-          <div className="flex min-w-[300px] justify-around">
+          <div className="flex min-w-[300px] justify-between relative pr-36">
             <div>
               <Link href="/">Home</Link>
             </div>
