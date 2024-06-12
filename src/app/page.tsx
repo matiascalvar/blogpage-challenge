@@ -18,7 +18,7 @@ const App = () => {
           style={{ position: "relative", top: "-30px" }}
         >
           {allPosts.map((post) => (
-            <Post post={post} key={post.id} />
+            <Post post={post} key={post.id} mainPage />
           ))}
         </div>
       ) : (
