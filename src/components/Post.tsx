@@ -20,14 +20,16 @@ const Post: FunctionComponent<PostProps> = ({ post }) => {
   return (
     <div
       key={post.id}
-      className="m-2.5 p-2.5 bg-white w-[1000px] rounded-md shadow-md"
+      className="m-2.5 bg-white w-[1000px] rounded-md shadow-md p-5"
     >
       <div className="flex items-center">
-        <div
-          className={`flex items-center justify-center rounded-full ${randomColor()} w-8 h-8 mr-2 text-white`}
-        >
-          {post.initials}
-        </div>
+        {post.initials && (
+          <div
+            className={`flex items-center justify-center rounded-full ${randomColor()} w-8 h-8 mr-2 text-white`}
+          >
+            {post.initials}
+          </div>
+        )}
         <p className="text-bold">{post.name}</p>
       </div>
       <p className="font-medium mt-1">{post.title}</p>
