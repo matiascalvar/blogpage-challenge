@@ -12,7 +12,7 @@ const Header = () => {
       }}
     >
       <div
-        className="min-w-[300px] text-left text-lg text-red-600 font-extrabold tracking-widest relative pl-36"
+        className="min-w-[300px] text-left text-lg text-bi-red font-extrabold tracking-widest relative pl-36"
         id="logo"
       >
         <Link href="/">
