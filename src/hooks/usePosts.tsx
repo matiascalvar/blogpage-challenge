@@ -3,7 +3,7 @@ import { getAllPosts } from "@/actions/posts";
 import { Post, User, UserLookup } from "@/types/interfaces";
 import { getAllUsers } from "@/actions/users";
 
-function getInitials(name: string): string {
+export function getInitials(name: string): string {
   const nameParts = name.split(" ");
   let initials = nameParts.map((part) => part[0].toUpperCase()).join("");
   return initials.slice(0, 2);
