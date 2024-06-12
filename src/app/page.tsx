@@ -1,14 +1,14 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import Post from "@/components/Post";
 import usePosts from "@/hooks/usePosts";
-import Link from "next/link";
 
 const App = () => {
   const { isLoading, data: allPosts, error } = usePosts();
 
-  if (isLoading) return <div>Loading...</div>;
-  else if (error) return <div>There were an error. Try again later.</div>;
+  if (isLoading) return <Loading />;
+  else if (error) return <div>There was an error. Try again later.</div>;
 
   return (
     <div>

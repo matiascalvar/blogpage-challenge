@@ -8,6 +8,7 @@ import {
   updateComment,
 } from "@/actions/comments";
 import usePostAndComments from "@/hooks/usePostAndComments";
+import Loading from "@/components/Loading";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -95,8 +96,8 @@ const PostDetail = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  else if (error) return <div>There were an error. Try again later.</div>;
+  if (isLoading) return <Loading />;
+  else if (error) return <div>There was an error. Try again later.</div>;
 
   return (
     <div className="h-auto">
