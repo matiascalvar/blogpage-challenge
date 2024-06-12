@@ -1,6 +1,8 @@
 import { getComments, getPost } from "@/actions/posts";
-import { Comment, Post } from "@/types/interfaces";
+import { getUser } from "@/actions/users";
+import { Comment, Post, User } from "@/types/interfaces";
 import { useEffect, useState } from "react";
+import { getInitials } from "./usePosts";
 
 const usePostAndComments = (id: number | string) => {
   const [post, setPost] = useState<Post>();
@@ -11,10 +13,15 @@ const usePostAndComments = (id: number | string) => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const [post, comments] = await Promise.all([
+        let [post, comments]: [Post, Comment[]] = await Promise.all([
           getPost(Number(id)),
           getComments(id as string),
         ]);
+        const user: User = await getUser(post.userId);
+
+        post["name"] = user.name;
+        post["email"] = user.email;
+        post["initials"] = getInitials(user.name);
         setPost(post);
         setComments(comments);
       } catch (err) {
