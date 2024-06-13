@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bridge In Challenge
+
+Demo available at [https://bridgein-challenge.vercel.app/](https://bridgein-challenge.vercel.app/ "https://bridgein-challenge.vercel.app/")
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+Make sure you have the latest version of npm and node installed on your machine. If not, please take a look at this link below.
+
+[https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+### Installing
+
+After that, install required dependencies by executing this command on terminal
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After instalation success, run command below to make your code available in development mode.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open [http://localhost:3000](http://localhost:3000) to see the website
 
-## Learn More
+## Running on production
 
-To learn more about Next.js, take a look at the following resources:
+Kindly use this command to build app for production and serve it.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run build && npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) to see the website
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For this project we are using [Vercel](https://vercel.com/).
+It has built in CI/CD to detect changes/merge on default branch to create new build.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Built With
+
+- [https://nextjs.org/](https://nextjs.org/ "https://nextjs.org/") - React Framework
+- [Tailwind](https://tailwindcss.com/) - CSS framework
+- [React Icons](https://react-icons.github.io/react-icons/) - SVG Icons
+
+## Author
+
+- **Matias Calvar** - [https://www.linkedin.com/in/matiascalvar/](https://www.linkedin.com/in/matiascalvar/ "https://www.linkedin.com/in/matiascalvar/")
