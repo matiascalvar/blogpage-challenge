@@ -1,3 +1,6 @@
+.Loading {
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+}
 
 .lds-ellipsis,
 .lds-ellipsis div {
@@ -58,5 +61,3 @@
     transform: translate(24px, 0);
   }
 }
-
-
