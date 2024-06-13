@@ -1,9 +1,9 @@
 "use client";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { useParams } from "next/navigation";
-import DeletionModal from "@/components/DeletionModal";
+import DeletionModal from "@/components/deletionmodal/DeletionModal";
 import Loading from "@/components/loading/Loading";
-import Post from "@/components/Post";
+import Post from "@/components/post/Post";
 import Pagination from "@/components/pagination/Pagination";
 import Form from "@/components/form/Form";
 import CommentsList from "@/components/comment/CommentsList";

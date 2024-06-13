@@ -1,5 +1,3 @@
-import { FunctionComponent } from "react";
-
 interface ButtonProps {
   type: string;
   text: string;

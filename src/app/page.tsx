@@ -1,7 +1,7 @@
 "use client";
 
 import Loading from "@/components/loading/Loading";
-import Post from "@/components/Post";
+import Post from "@/components/post/Post";
 import Pagination from "@/components/pagination/Pagination";
 import usePagination from "@/hooks/usePagination";
 import usePosts from "@/hooks/usePosts";
