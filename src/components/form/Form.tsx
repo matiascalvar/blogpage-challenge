@@ -1,4 +1,5 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
+import Button from "../button/Buttton";
 
 interface FormProps {
   handleAddition: (
@@ -25,7 +26,7 @@ const Form: FC<FormProps> = ({ handleAddition }) => {
   return (
     <form
       onSubmit={(e) => handleAddition(e, formData, setFormData)}
-      className="w-full px-10"
+      className="w-full px-2.5"
     >
       <div className="flex w-7/12 mb-5">
         <input
@@ -35,6 +36,7 @@ const Form: FC<FormProps> = ({ handleAddition }) => {
           placeholder="Name..."
           value={formData.name}
           onChange={handleFormChange}
+          required={true}
         />
         <input
           type="email"
@@ -43,6 +45,7 @@ const Form: FC<FormProps> = ({ handleAddition }) => {
           placeholder="Email..."
           value={formData.email}
           onChange={handleFormChange}
+          required={true}
         />
       </div>
       <textarea
@@ -51,15 +54,11 @@ const Form: FC<FormProps> = ({ handleAddition }) => {
         placeholder="Leave a comment..."
         onChange={handleFormChange}
         rows={3}
-        className="w-full p-2 border rounded-md"
+        className="w-full p-2 border rounded-md resize-none"
+        required={true}
       />
       <div className="flex justify-end">
-        <button
-          className="min-w-[120px] bg-red-500 text-white rounded-md text-sm min-h-6"
-          type="submit"
-        >
-          Add comment
-        </button>
+        <Button type="warning" text="Add comment" isSubmit />
       </div>
     </form>
   );
