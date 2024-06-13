@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import Button from "./button/Buttton";
 
 interface Modal {
   handleDeletion: () => Promise<void>;
@@ -30,21 +31,15 @@ const DeletionModal = ({ handleDeletion, setOpenModal }: Modal) => {
         }}
       >
         <p className="my-2">Delete comment?</p>
-        <div>
-          <button
-            className="min-w-[100px] bg-red-500 text-white rounded-md text-sm min-h-6 mx-2"
+        <div className="flex gap-3">
+          <Button
+            text="Delete"
+            type="warning"
             onClick={() => {
               handleDeletion(), setOpenModal(false);
             }}
-          >
-            Delete
-          </button>
-          <button
-            className="min-w-[100px] border rounded-md text-sm min-h-6 mx-2"
-            onClick={() => setOpenModal(false)}
-          >
-            Cancel
-          </button>
+          />
+          <Button text="Cancel" type="" onClick={() => setOpenModal(false)} />
         </div>
       </div>
     </div>
