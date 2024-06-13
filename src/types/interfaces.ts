@@ -49,3 +49,9 @@ export interface User {
 export interface UserLookup {
   [key: number]: User;
 }
+
+export interface FormData {
+  name: string;
+  email: string;
+  newComment: string;
+}
