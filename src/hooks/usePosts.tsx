@@ -34,7 +34,6 @@ const usePosts = () => {
           email: userLookup[post.userId].email,
           initials: getInitials(userLookup[post.userId].name),
         }));
-        console.log({ userLookup, enrichedPosts });
 
         setAllPosts(enrichedPosts);
       } catch (err) {
