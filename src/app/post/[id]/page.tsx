@@ -2,7 +2,7 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { useParams } from "next/navigation";
 import DeletionModal from "@/components/DeletionModal";
-import Loading from "@/components/Loading";
+import Loading from "@/components/loading/Loading";
 import Post from "@/components/Post";
 import Pagination from "@/components/pagination/Pagination";
 import Form from "@/components/form/Form";
