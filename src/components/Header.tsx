@@ -20,7 +20,7 @@ const Header = () => {
           <p>CHALLENGE</p>
         </Link>
       </div>
-      <div className="flex min-w-[300px] justify-between relative pr-36 ">
+      <div className="flex min-w-[300px] justify-between relative pr-36 font-medium ">
         <div>
           <Link href="/">
             <p>Home</p>
