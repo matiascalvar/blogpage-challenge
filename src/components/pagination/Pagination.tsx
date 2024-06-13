@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     postsPerPage < length && (
-      <div className="flex flex-row justify-center gap-3 z-10 select-none border-red-900 text-sm">
+      <div className="flex flex-row justify-center gap-3 select-none border-red-900 text-sm">
         <button
           className="flex items-center gap-1"
           onClick={() => handlePagination(currentPage - 1)}
