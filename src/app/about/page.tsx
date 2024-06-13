@@ -1,8 +1,10 @@
+import AboutCard from "@/components/about/About";
+
 const About = () => {
   return (
-    <div className="h-auto">
-      <h1>About page</h1>
-    </div>
+    <>
+      <AboutCard />
+    </>
   );
 };
 export default About;
