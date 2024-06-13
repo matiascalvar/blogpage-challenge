@@ -12,7 +12,7 @@ const Button = ({ type, text, onClick, isSubmit = false }: ButtonProps) => {
     } else if (type === "confirm") {
       return "bg-green-500 hover:bg-green-800";
     } else {
-      return "border rounded-md text-inherit hover:border-gray-800";
+      return "border rounded-md text-black hover:border-gray-800";
     }
   };
   return (
