@@ -1,6 +1,7 @@
 import { Post as PostType } from "@/types/interfaces";
 import Link from "next/link";
 import { FunctionComponent, useState } from "react";
+import { IoChevronBackSharp } from "react-icons/io5";
 
 interface PostProps {
   post: PostType;
@@ -28,6 +29,14 @@ const Post: FunctionComponent<PostProps> = ({ post, mainPage }) => {
         mainPage && "hover:shadow-bi-red hover:shadow"
       }`}
     >
+      {!mainPage && (
+        <Link href="/">
+          <div className="flex items-center mb-5 cursor-pointer">
+            <IoChevronBackSharp size={"1.2rem"} color="#64748B" />
+            <p className="text-slate-500 text-xs">Go back</p>
+          </div>
+        </Link>
+      )}
       <div className="flex items-center">
         {post.initials && (
           <div
