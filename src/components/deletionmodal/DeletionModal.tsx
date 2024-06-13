@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import Button from "./button/Buttton";
+import Button from "../button/Buttton";
 
 interface Modal {
   handleDeletion: () => Promise<void>;
