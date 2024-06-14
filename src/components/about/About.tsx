@@ -33,7 +33,8 @@ const AboutCard = () => {
             </div>
 
             <p className="text-bold">{developer.name}</p>
-            <p className="text-bold mx-5 text-gray-400 select-none text-sm">
+
+            <p className="text-bold mx-5 text-gray-400 select-none text-sm hidden lg:block">
               {developer.email}
             </p>
           </div>
