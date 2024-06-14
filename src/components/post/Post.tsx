@@ -51,7 +51,7 @@ const Post: FunctionComponent<PostProps> = ({ post, mainPage }) => {
       <p className="text-sm my-1">{post.body}</p>
       {mainPage && (
         <p className="mt-2 text-xs text-end">
-          <Link href={`/post/${post.id}`}>See more</Link>
+          <Link href={`/post/${post.id}`}>See comments</Link>
         </p>
       )}
     </div>
