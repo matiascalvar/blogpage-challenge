@@ -104,7 +104,7 @@ const PostDetail = () => {
         {post && <Post post={post} />}
         <div
           id="input-comments"
-          className="flex items-center flex-col w-[1000px] border rounded-md"
+          className="flex items-center flex-col lg:w-[1000px] border rounded-md"
         >
           <div className="flex my-5 mx-5 w-full">
             <Form handleAddition={handleAddition} />

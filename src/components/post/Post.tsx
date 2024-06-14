@@ -25,7 +25,7 @@ const Post: FunctionComponent<PostProps> = ({ post, mainPage }) => {
   return (
     <div
       key={post.id}
-      className={`m-2.5 bg-white w-[1000px] rounded-md shadow-md p-5 ${
+      className={`m-2.5 bg-white lg:w-[1000px] rounded-md shadow-md p-5 ${
         mainPage && "hover:shadow-bi-red hover:shadow"
       }`}
     >

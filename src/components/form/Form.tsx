@@ -28,7 +28,7 @@ const Form: FC<FormProps> = ({ handleAddition }) => {
       onSubmit={(e) => handleAddition(e, formData, setFormData)}
       className="w-full px-2.5"
     >
-      <div className="flex w-7/12 mb-5">
+      <div className="flex lg:w-7/12 mb-5">
         <input
           type="text"
           className="w-full my-1 border rounded-md min-h-8 pl-4"

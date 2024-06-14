@@ -16,11 +16,14 @@ const developer: devType = {
 
 const AboutCard = () => {
   return (
-    <div className={styles.AboutCard + " flex justify-center h-auto"}>
-      <div className="my-10">
+    <div
+      className={styles.AboutCard + " flex justify-center h-auto p-2.5 pt-0"}
+      style={{ position: "relative", top: "-30px" }}
+    >
+      <div className="">
         <div
           key={developer.id}
-          className={`m-2.5 bg-white w-[1000px] rounded-md shadow-md p-5 `}
+          className={`lg:m-2.5 bg-white lg:w-[1000px] rounded-md shadow-md p-5`}
         >
           <div className="flex items-center">
             <div
