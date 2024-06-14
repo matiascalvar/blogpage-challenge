@@ -1,5 +1,5 @@
 import { Comment as CommentType } from "@/types/interfaces";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { RiEdit2Line, RiDeleteBin2Line } from "react-icons/ri";
 
 interface CommentProps {
@@ -10,13 +10,13 @@ interface CommentProps {
   handleModal: any;
 }
 
-const Comment: FC<CommentProps> = ({
+const Comment = ({
   comment,
   handleEditing,
   editingCommentId,
   handleSave,
   handleModal,
-}) => {
+}: CommentProps) => {
   const [editedText, setEditedText] = useState(comment.body);
 
   return (

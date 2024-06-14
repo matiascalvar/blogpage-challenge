@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../button/Buttton";
 
 interface FormProps {
@@ -9,7 +9,7 @@ interface FormProps {
   ) => Promise<void>;
 }
 
-const Form: FC<FormProps> = ({ handleAddition }) => {
+const Form = ({ handleAddition }: FormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

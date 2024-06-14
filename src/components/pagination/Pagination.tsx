@@ -9,12 +9,12 @@ interface PaginationProps {
   currentPage: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination = ({
   postsPerPage,
   length,
   handlePagination,
   currentPage,
-}) => {
+}: PaginationProps) => {
   const totalPages = Math.ceil(length / postsPerPage);
 
   return (

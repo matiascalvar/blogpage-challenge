@@ -1,4 +1,3 @@
-import { FC } from "react";
 import Comment from "./Comment";
 import { Comment as CommentType } from "@/types/interfaces";
 
@@ -10,13 +9,13 @@ interface CommentsListProps {
   handleModal: any;
 }
 
-const CommentsList: FC<CommentsListProps> = ({
+const CommentsList = ({
   comments,
   handleEditing,
   editingCommentId,
   handleSave,
   handleModal,
-}) => {
+}: CommentsListProps) => {
   return (
     <div className="w-full">
       {comments.map((comment) => (

@@ -1,6 +1,6 @@
 import { Post as PostType } from "@/types/interfaces";
 import Link from "next/link";
-import { FunctionComponent, useState } from "react";
+import { useState } from "react";
 import { IoChevronBackSharp } from "react-icons/io5";
 
 interface PostProps {
@@ -19,7 +19,7 @@ const colors = [
 ];
 const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
-const Post: FunctionComponent<PostProps> = ({ post, mainPage }) => {
+const Post = ({ post, mainPage }: PostProps) => {
   const [color] = useState(randomColor());
 
   return (
