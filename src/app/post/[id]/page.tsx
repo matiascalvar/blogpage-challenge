@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import DeletionModal from "@/components/deletionmodal/DeletionModal";
 import Loading from "@/components/loading/Loading";
@@ -14,7 +14,16 @@ import {
   deleteComment,
   updateComment,
 } from "@/actions/comments";
-import { FormData } from "@/types/interfaces";
+import { Comment, FormData } from "@/types/interfaces";
+
+const getUniqueCommentId = (comments: Comment[], initialId = 501) => {
+  const existingIds = new Set(comments.map((comment) => comment.id));
+  let newId = initialId;
+  while (existingIds.has(newId)) {
+    newId += 1;
+  }
+  return newId;
+};
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -27,6 +36,7 @@ const PostDetail = () => {
   const [editingCommentId, setEditingCommentId] = useState<number | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [currentCommentId, setCurrentCommentId] = useState<number>();
+  const commentnewId = useRef(501);
 
   const handleEditing = (commentId: number | null) => {
     setEditingCommentId(commentId);
@@ -62,8 +72,13 @@ const PostDetail = () => {
         newComment
       );
       setFormData({ name: "", email: "", newComment: "" });
-      resNewComment &&
-        setComments((prevComments) => [resNewComment, ...prevComments]);
+      if (resNewComment) {
+        const uniqueId = getUniqueCommentId(comments);
+        setComments((prevComments) => [
+          { ...resNewComment, id: uniqueId },
+          ...prevComments,
+        ]);
+      }
     } catch (error) {
       console.error("Error creating comment:", error);
     }
