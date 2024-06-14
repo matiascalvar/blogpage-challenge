@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Comment } from "@/types/interfaces";
+import { API_URL } from "@/libs/utils";
 
 export const createComment = async (
   postId: number,
@@ -9,7 +10,7 @@ export const createComment = async (
 ) => {
   try {
     const res = await axios.post<Comment>(
-      `https://jsonplaceholder.typicode.com/comments/`,
+      `${API_URL}/comments/`,
       {
         postId,
         name,
@@ -32,7 +33,7 @@ export const createComment = async (
 export const updateComment = async (commentId: number, body: string) => {
   try {
     const res = await axios.patch<Comment>(
-      `https://jsonplaceholder.typicode.com/comments/${commentId}`,
+      `${API_URL}/comments/${commentId}`,
       {
         body,
       },
@@ -51,14 +52,11 @@ export const updateComment = async (commentId: number, body: string) => {
 
 export const deleteComment = async (commentId: number) => {
   try {
-    const res = await axios.delete(
-      `https://jsonplaceholder.typicode.com/comments/${commentId}`,
-      {
-        headers: {
-          "Content-Type": "application/json; charset=UTF-8",
-        },
-      }
-    );
+    const res = await axios.delete(`${API_URL}/comments/${commentId}`, {
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    });
 
     return res.data;
   } catch (err) {
