@@ -18,7 +18,7 @@ const CommentsList: FC<CommentsListProps> = ({
   handleModal,
 }) => {
   return (
-    <div>
+    <div className="w-full">
       {comments.map((comment) => (
         <Comment
           key={comment.id}
