@@ -15,6 +15,7 @@ import {
   updateComment,
 } from "@/actions/comments";
 import { Comment, FormData } from "@/types/interfaces";
+import styles from "./PostDetail.module.css";
 
 const getUniqueCommentId = (comments: Comment[], initialId = 501) => {
   const existingIds = new Set(comments.map((comment) => comment.id));
@@ -105,7 +106,7 @@ const PostDetail = () => {
   else if (error) return <div>There was an error. Try again later.</div>;
 
   return (
-    <div className="h-auto">
+    <div className={styles.PostDetail + " h-auto"}>
       <div
         className="flex flex-col items-center"
         style={{ position: "relative", top: "-30px" }}
