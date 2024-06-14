@@ -5,6 +5,7 @@ import Post from "@/components/post/Post";
 import Pagination from "@/components/pagination/Pagination";
 import usePagination from "@/hooks/usePagination";
 import usePosts from "@/hooks/usePosts";
+import Error from "@/components/error/Error";
 
 const App = () => {
   const { isLoading, data: allPosts, error } = usePosts();
@@ -13,7 +14,7 @@ const App = () => {
     usePagination(allPosts, 5);
 
   if (isLoading) return <Loading />;
-  else if (error) return <div>There was an error. Try again later.</div>;
+  else if (error) return <Error />;
 
   return (
     <div>

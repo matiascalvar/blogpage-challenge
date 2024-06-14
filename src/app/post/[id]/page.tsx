@@ -16,6 +16,7 @@ import {
 } from "@/actions/comments";
 import { Comment, FormData } from "@/types/interfaces";
 import styles from "./PostDetail.module.css";
+import Error from "@/components/error/Error";
 
 const getUniqueCommentId = (comments: Comment[], initialId = 501) => {
   const existingIds = new Set(comments.map((comment) => comment.id));
@@ -103,8 +104,7 @@ const PostDetail = () => {
   };
 
   if (isLoading) return <Loading />;
-  else if (error) return <div>There was an error. Try again later.</div>;
-
+  else if (error) return <Error />;
   return (
     <div className={styles.PostDetail + " h-auto"}>
       <div
