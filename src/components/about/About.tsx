@@ -8,7 +8,7 @@ const developer: devType = {
   userId: 9999,
   id: "9999",
   title: "Front End Developer",
-  body: "This app was developed as a challenge for the Frontend Developer position at BRIDGE IN, utilizing Next.js, Tailwind CSS, react-icons, and React with TypeScript. The application features a header, navigation menu, and main content area, enabling users to list posts, view comments for a specific post, and perform CRUD operations on comments. The project incorporates data from the public API at jsonplaceholder.typicode.com.",
+  body: "This app was developed as a personal challenge utilizing Next.js, Tailwind CSS, react-icons, and React with TypeScript. The application features a header, navigation menu, and main content area, enabling users to list posts, view comments for a specific post, and perform CRUD operations on comments. The project incorporates data from the public API at jsonplaceholder.typicode.com.",
   email: "matiasncalvar@gmail.com",
   name: "Matias Calvar",
   initials: "MC",
