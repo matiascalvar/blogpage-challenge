@@ -1,6 +1,6 @@
-# Bridge In Challenge
+# React Bytes - Blog Page
 
-Demo available at [https://bridgein-challenge.vercel.app/](https://bridgein-challenge.vercel.app/ "https://bridgein-challenge.vercel.app/")
+Demo available at [https://react-bytes.vercel.app/](https://react-bytes.vercel.app/ "https://react-bytes.vercel.app/")
 
 ## Getting Started
 
