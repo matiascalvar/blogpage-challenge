@@ -7,8 +7,8 @@ import Footer from "@/components/footer/Footer";
 const monserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bridge In Challenge",
-  description: "Bridge In Challenge",
+  title: "React Bytes - Blog Page",
+  description: "REACT BYTES - BLOG PAGE",
 };
 
 export default function RootLayout({

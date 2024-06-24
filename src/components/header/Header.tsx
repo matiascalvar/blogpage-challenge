@@ -16,8 +16,8 @@ const Header = () => {
         id="logo"
       >
         <Link href="/">
-          <p>BRIDGE IN</p>
-          <p>CHALLENGE</p>
+          <p>REACT BYTES</p>
+          <p>BLOG PAGE</p>
         </Link>
       </div>
       <div className="flex min-w-[120px] lg:min-w-[300px] justify-between relative pr-1 lg:pr-36 font-medium ">
